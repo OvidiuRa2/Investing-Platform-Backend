@@ -19,7 +19,7 @@ import java.util.Map;
 public class StripeController {
 
     @Value("${stripe.key.secret}")
-    private static String secretKey;
+    private  String secretKey;
     private static Gson gson = new Gson();
 
     @PostMapping("/payment")
@@ -30,7 +30,7 @@ public class StripeController {
      */
     public String paymentWithCheckoutPage(@RequestBody List<PaymentInfo> payments) throws StripeException {
 
-        Stripe.apiKey = "sk_test_51OIotvFJh6pEaOKVGrzzyxO5nfiEvmQfIzE8XFYCXRA6In9IOWN0itiYsnvEGbYsE4M4VVd2k9XwOZVsEwCCrGxg00QoOpsxOX";
+        Stripe.apiKey = secretKey;
 
         List<SessionCreateParams.LineItem> lineItems = new ArrayList<>();
         if (!payments.isEmpty()) {
